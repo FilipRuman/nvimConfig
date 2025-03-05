@@ -3,6 +3,7 @@ return {
     'numToStr/Comment.nvim',
     opts = {},
     config = function()
+      vim.keymap.set('n', '<C-/>', 'gcc')
       require('Comment').setup {
         ---Add a space b/w comment and the line
         padding = true,
