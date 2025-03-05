@@ -85,7 +85,7 @@ vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set({ 'n', 'v' }, 'U', '<cmd>redo<CR>')
 
 -- save
-vim.keymap.set({ 'n', 'v' }, '<C-s>', '<cmd>w<CR>')
+vim.keymap.set({ 'n', 'v' }, '<C-s>', '<cmd>wa<CR>')
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
