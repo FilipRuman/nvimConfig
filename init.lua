@@ -8,6 +8,24 @@ vim.opt.termguicolors = true
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- make rustaceanvim work
+vim.g.rustaceanvim = {
+  server = {
+    cmd = function()
+      local mason_registry = require 'mason-registry'
+      if mason_registry.is_installed 'rust-analyzer' then
+        -- This may need to be tweaked depending on the operating system.
+        local ra = mason_registry.get_package 'rust-analyzer'
+        local ra_filename = ra:get_receipt():get().links.bin['rust-analyzer']
+        return { ('%s/%s'):format(ra:get_install_path(), ra_filename or 'rust-analyzer') }
+      else
+        -- global installation
+        return { 'rust-analyzer' }
+      end
+    end,
+  },
+}
+
 -- spell
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
@@ -163,12 +181,10 @@ vim.g.undotree_SetFocusWhenToggle = 1
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  -- LSP Plugins
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
