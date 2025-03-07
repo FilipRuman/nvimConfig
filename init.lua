@@ -29,7 +29,7 @@ vim.g.rustaceanvim = {
 -- spell
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
-
+vim.opt.spellcapcheck = ''
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -110,6 +110,9 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- why this shit exists in 2025????
 vim.keymap.set('n', 'Q', '<nop>')
+
+-- so I don't accidentally click this
+vim.keymap.set('i', '', '<nop>')
 
 -- Delete to void
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d')
