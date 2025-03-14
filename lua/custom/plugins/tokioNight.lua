@@ -16,7 +16,7 @@ return {
         lualine_bold = true,
         on_colors = function(colors)
           colors.bg = '#13131c' -- Use the darker background of 'night' style.
-          colors.comment = '#626784' -- Use a more gray comment.
+          colors.comment = '#ff947f' -- Use a more gray comment.
         end,
       }
       vim.cmd 'colorscheme tokyonight-night'
