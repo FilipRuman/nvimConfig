@@ -9,20 +9,31 @@ return {
       bigfile = { enabled = true },
       dashboard = {
         enabled = true,
+        preset = {
+          header = [[
+                                                                   
+      ████ ██████           █████      ██                 btw
+     ███████████             █████                            
+     █████████ ███████████████████ ███   ███████████  
+    █████████  ███    █████████████ █████ ██████████████  
+   █████████ ██████████ █████████ █████ █████ ████ █████  
+ ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+██████  █████████████████████ ████ █████ █████ ████ ██████
+]],
+        },
         sections = {
           { section = 'header' },
           { section = 'keys', gap = 1, padding = 1 },
           { section = 'startup' },
           {
             section = 'terminal',
-            cmd = 'pokemon-colorscripts -r --no-title; sleep .1',
-            random = 10,
+            cmd = 'ascii-image-converter "G:\\Mój dysk\\My icons\\Alpaca icon hollow white.png" -C ',
             pane = 2,
-            indent = 4,
             height = 30,
           },
         },
       },
+
       explorer = { enabled = true },
       indent = { enabled = true },
       lazygit = { enabled = true },
