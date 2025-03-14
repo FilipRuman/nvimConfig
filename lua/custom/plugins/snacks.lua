@@ -4,7 +4,6 @@ return {
     'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
       dashboard = {
@@ -27,10 +26,12 @@ return {
           { section = 'startup' },
           {
             section = 'terminal',
-            cmd = 'chafa "G:\\Mój dysk\\My icons\\Alpaca high res.png" --format symbols --symbols vhalf   --align center --size 120x40 ',
-            height = 60,
-            width = 120,
+            cmd = 'chafa "G:\\Mój dysk\\My icons\\Alpaca high res.png" --format symbols --symbols vhalf --size 100x30 ',
+            height = 30,
+            width = 60,
             pane = 4,
+            zindex = 0,
+            padding = 0,
             backdrop = 0,
           },
         },
