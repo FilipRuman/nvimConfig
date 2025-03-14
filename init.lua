@@ -27,6 +27,7 @@ vim.g.rustaceanvim = {
 }
 
 -- neovide
+vim.g.neovide_floating_shadow = false
 vim.g.neovide_fullscreen = true
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_refresh_rate = 144
