@@ -28,6 +28,9 @@ vim.g.rustaceanvim = {
 -- neovide
 vim.g.neovide_transparency = 0.95
 
+vim.g.neovide_opacity = 0.0
+vim.g.transparency = 0.0
+
 vim.g.neovide_floating_shadow = false
 vim.g.neovide_fullscreen = true
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
