@@ -46,12 +46,12 @@ return {
           ['g.'] = { 'actions.toggle_hidden', mode = 'n' },
           ['g\\'] = { 'actions.toggle_trash', mode = 'n' },
         },
+        view_options ={
+            -- Show files and directories that start with "."
+            show_hidden = true,
+          }, 
       }
-      view_options =
-        {
-          -- Show files and directories that start with "."
-          show_hidden = false,
-        }, vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
     end,
   },
 }

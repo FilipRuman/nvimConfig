@@ -26,10 +26,8 @@ vim.g.rustaceanvim = {
 -- spell
 
 -- neovide
-vim.g.neovide_transparency = 0.95
 
-vim.g.neovide_opacity = 0.0
-vim.g.transparency = 0.0
+vim.g.neovide_opacity = 0.8
 
 vim.g.neovide_floating_shadow = false
 vim.g.neovide_fullscreen = true
@@ -39,9 +37,13 @@ vim.o.guifont = 'MesloLGM Nerd Font:h14'
 if vim.g.neovide == true then
   vim.api.nvim_set_keymap('n', '<C-=>', ':lua vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1,  1.0)<CR>', { silent = true })
   vim.api.nvim_set_keymap('n', '<C-->', ':lua vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1,  0.1)<CR>', { silent = true })
-  vim.api.nvim_set_keymap('n', '<C-+>', ':lua vim.g.neovide_transparency = math.min(vim.g.neovide_transparency + 0.05, 1.0)<CR>', { silent = true })
-  vim.api.nvim_set_keymap('n', '<C-_>', ':lua vim.g.neovide_transparency = math.max(vim.g.neovide_transparency - 0.05, 0.0)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<C-+>', ':lua vim.g.neovide_opacity = math.min(vim.g.neovide_opacity + 0.05, 1.0)<CR>', { silent = true })
+  vim.api.nvim_set_keymap('n', '<C-_>', ':lua vim.g.neovide_opacity = math.max(vim.g.neovide_opacity - 0.05, 0.0)<CR>', { silent = true })
 end
+
+--format .nix
+  vim.api.nvim_set_keymap('n', '<C-n>', ':%!alejandra -qq<CR>', { silent = true })
+
 -- spell
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
@@ -119,7 +121,7 @@ vim.keymap.set('n', 'Q', '<nop>')
 
 -- so I don't accidentally click this
 vim.keymap.set('i', '', '<nop>')
-
+vim.keymap.set('i', '', '<nop>')
 -- Delete to void
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d')
 vim.keymap.set({ 'n', 'v' }, '<leader>c', '"_c')

@@ -45,7 +45,7 @@ return {
       })
       vim.keymap.set(
         'n',
-        '<leader>z+',
+        '<leader>z=',
         "<cmd>lua require('utils.cspell').add_word_to_c_spell_dictionary()<CR>",
         { noremap = true, silent = true, desc = 'Add unknown word to cspell dictionary' }
       )
