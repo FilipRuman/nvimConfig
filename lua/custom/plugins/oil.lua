@@ -46,9 +46,18 @@ return {
           ['g.'] = { 'actions.toggle_hidden', mode = 'n' },
           ['g\\'] = { 'actions.toggle_trash', mode = 'n' },
         },
+        columns = {
+          "icon",
+          -- "permissions",
+         -- "size",
+          -- "mtime",
+        },
         view_options ={
             -- Show files and directories that start with "."
-            show_hidden = true,
+            show_hidden =false,
+ is_hidden_file = function(name, bufnr)
+      return  string.find(name,".uid")or string.find(name,".old")or string.find(name,".import")
+    end,
           }, 
       }
       vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
