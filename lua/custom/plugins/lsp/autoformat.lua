@@ -31,16 +31,31 @@ return {
           lsp_format = lsp_format_opt,
         }
       end,
+      formatters = {
+        csharpier = {
+          command = 'dotnet-csharpier-config',
+          -- A list of strings, or a function that returns a list of strings
+          -- Return a single string instead of a list to run the command in a shell
+          args = { '$FILENAME', '--write-stdout' },
+
+          -- command = 'dotnet csharpier-config',
+          -- args = {
+          --   '--write-stdout',
+          -- },
+          -- to_stdin = true,
+        },
+      },
       formatters_by_ft = {
+        cs = { 'csharpier' },
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
-        --
-        nix = {'alejandra'},
-        rust = {'rustfmt'},
-        ["*"] = { 'codespell' },
+        -- cs = { 'omnisharp' },
+        nix = { 'alejandra' },
+        rust = { 'rustfmt' },
+        ['*'] = { 'codespell' },
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
