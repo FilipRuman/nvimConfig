@@ -5,7 +5,9 @@ return {
     event = 'VeryLazy',
     opts = {
       linters_by_ft = {
-        ['*'] = { 'cspell', 'codespell' }, -- Install with: pip install codespell
+        ['*'] = {
+          'cspell' --[[ , 'codespell' ]],
+        }, -- Install with: pip install codespell
       },
     },
     config = function(_, opts)

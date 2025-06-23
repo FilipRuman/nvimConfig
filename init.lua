@@ -42,7 +42,7 @@ if vim.g.neovide == true then
 end
 
 --format .nix
-  vim.api.nvim_set_keymap('n', '<C-n>', ':%!alejandra -qq<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-n>', ':%!alejandra -qq<CR>', { silent = true })
 
 -- spell
 vim.opt.spelllang = 'en_us'
@@ -82,7 +82,6 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 vim.opt.timeoutlen = 300
-
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -132,6 +131,9 @@ vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz')
 
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+
+vim.keymap.set('n', '[', '{')
+vim.keymap.set('n', ']', '}')
 
 -- exit terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
