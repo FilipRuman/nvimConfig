@@ -23,7 +23,22 @@ vim.g.rustaceanvim = {
   },
 }
 
--- spell
+                    -- spell
+-- toogle term with pwsh
+local powershell_options = {
+  shell = vim.fn.executable 'pwsh' == 1 and 'pwsh' or 'powershell',
+  shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
+  shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
+  shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
+  shellquote = '',
+  shellxquote = '',
+}
+
+for option, value in pairs(powershell_options) do
+  vim.opt[option] = value
+end
+
+--
 
 -- neovide
 
@@ -103,6 +118,13 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set('n', 'n', 'nzz', { noremap = true, silent = true })
+
+vim.keymap.set('n', 'J', '<C-d>', { noremap = true, silent = true })
+vim.keymap.set('n', 'K', '<C-u>', { noremap = true, silent = true })
+
+vim.keymap.set('', 'N', 'Nzz')
 
 -- normal mode
 vim.keymap.set('i', 'jj', '<Esc>')

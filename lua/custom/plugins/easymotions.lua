@@ -1,17 +1,14 @@
 return {
   {
-    'easymotion/vim-easymotion',
+    'folke/flash.nvim',
+    event = 'VeryLazy',
     opts = {},
-    config = function()
-      -- move to back of a world - search forward
-      vim.cmd 'map <leader>b <Plug>(easymotion-w)'
-      -- move to back of a world - search backwards
-      vim.cmd 'map <leader>B <Plug>(easymotion-b)'
+    
+  -- stylua: ignore
+    keys = {
 
-      -- move to front of a world - search forward
-      vim.cmd 'map <leader>e <Plug>(easymotion-e)'
-      -- move to front of a world - search backwards
-      vim.cmd 'map <leader>E <Plug>(easymotion-ge)'
-    end,
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    },
   },
 }
