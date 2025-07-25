@@ -55,7 +55,6 @@ return {
           --  the definition of its *type*, not where it was *defined*.
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
 
-
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -178,27 +177,27 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-omnisharp = {
-      handlers = {
-        ["textDocument/definition"] = function(...)
-          return require("omnisharp_extended").handler(...)
-        end,
-      },
-      -- keys = {
-      --   {
-      --     "gd",
-      --     LazyVim.has("telescope.nvim") and function()
-      --       require("omnisharp_extended").telescope_lsp_definitions()
-      --     end or function()
-      --       require("omnisharp_extended").lsp_definitions()
-      --     end,
-      --     desc = "Goto Definition",
-      --   },
-      -- },
-      enable_roslyn_analyzers = true,
-      organize_imports_on_format = true,
-      enable_import_completion = true,
-    },
+        omnisharp = {
+          handlers = {
+            ['textDocument/definition'] = function(...)
+              return require('omnisharp_extended').handler(...)
+            end,
+          },
+          -- keys = {
+          --   {
+          --     "gd",
+          --     LazyVim.has("telescope.nvim") and function()
+          --       require("omnisharp_extended").telescope_lsp_definitions()
+          --     end or function()
+          --       require("omnisharp_extended").lsp_definitions()
+          --     end,
+          --     desc = "Goto Definition",
+          --   },
+          -- },
+          enable_roslyn_analyzers = true,
+          organize_imports_on_format = true,
+          enable_import_completion = true,
+        },
         clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -261,48 +260,7 @@ omnisharp = {
           end,
         },
       }
-      -- require('lspconfig').omnisharp.setup {
-      --   cmd = { 'dotnet', 'C:\\Users\\f\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\libexec\\OmniSharp.dll' },
-      --
-      --   settings = {
-      --     FormattingOptions = {
-      --       -- Enables support for reading code style, naming convention and analyzer
-      --       -- settings from .editorconfig.
-      --       EnableEditorConfigSupport = true,
-      --       -- Specifies whether 'using' directives should be grouped and sorted during
-      --       -- document formatting.
-      --       OrganizeImports = true,
-      --     },
-      --     MsBuild = {
-      --       -- If true, MSBuild project system will only load projects for files that
-      --       -- were opened in the editor. This setting is useful for big C# codebases
-      --       -- and allows for faster initialization of code navigation features only
-      --       -- for projects that are relevant to code that is being edited. With this
-      --       -- setting enabled OmniSharp may load fewer projects and may thus display
-      --       -- incomplete reference lists for symbols.
-      --       LoadProjectsOnDemand = nil,
-      --     },
-      --     RoslynExtensionsOptions = {
-      --       -- Enables support for roslyn analyzers, code fixes and rulesets.
-      --       EnableAnalyzersSupport = true,
-      --       -- Enables support for showing unimported types and unimported extension
-      --       -- methods in completion lists. When committed, the appropriate using
-      --       -- directive will be added at the top of the current file. This option can
-      --       -- have a negative impact on initial completion responsiveness,
-      --       -- particularly for the first few completion sessions after opening a
-      --       -- solution.
-      --       EnableImportCompletion = nil,
-      --       -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-      --       -- true
-      --       AnalyzeOpenDocumentsOnly = nil,
-      --     },
-      --     Sdk = {
-      --       -- Specifies whether to include preview versions of the .NET SDK when
-      --       -- determining which version to use for project loading.
-      --       IncludePrereleases = true,
-      --     },
-      --   },
-      -- }
+      require('lspconfig').zls.setup {}
     end,
   },
 }
