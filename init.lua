@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 vim.opt.termguicolors = true
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
+vim.opt.winborder = 'rounded'
 
 -- make rustaceanvim work
 vim.g.rustaceanvim = {
@@ -22,6 +23,8 @@ vim.g.rustaceanvim = {
     end,
   },
 }
+
+vim.o.swapfile = false
 
 -- spell
 -- toogle term with pwsh
@@ -57,7 +60,7 @@ if vim.g.neovide == true then
 end
 
 --format .nix
-vim.api.nvim_set_keymap('n', '<C-n>', ':%!alejandra -qq<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-n>', ':%!alejandra -qq<CR>', { silent = true })
 
 -- spell
 vim.opt.spelllang = 'en_us'
@@ -162,6 +165,8 @@ vim.keymap.set('n', ']', '}')
 -- exit terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 --
+
+vim.keymap.set('n', '<C-x>', '')
 -- -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
