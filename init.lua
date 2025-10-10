@@ -6,6 +6,13 @@ vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
 vim.opt.winborder = 'rounded'
 
+-- set syntax highliting to rust for .tip files
+vim.api.nvim_create_augroup('tip_filetype', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.tip',
+  command = 'set syntax=rust',
+})
+
 -- make rustaceanvim work
 vim.g.rustaceanvim = {
   server = {
@@ -45,7 +52,7 @@ end
 
 -- neovide
 
-vim.g.neovide_opacity = 0.8
+vim.g.neovide_opacity = 0.9
 
 vim.g.neovide_floating_shadow = false
 vim.g.neovide_fullscreen = true
