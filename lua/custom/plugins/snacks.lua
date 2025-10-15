@@ -24,17 +24,7 @@ return {
           { section = 'header' },
           { section = 'keys', gap = 1, padding = 1 },
           { section = 'startup' },
-          {
-            section = 'terminal',
-            cmd = 'chafa "G:\\Mój dysk\\My icons\\Alpaca high res.png" --format symbols --symbols vhalf --size 100x30 ',
-            height = 30,
-            width = 60,
-            pane = 4,
-            zindex = 0,
-            padding = 0,
-            backdrop = 0,
-          },
-        },
+                  },
       },
 
       explorer = { enabled = true },

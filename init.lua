@@ -31,29 +31,16 @@ vim.g.rustaceanvim = {
   },
 }
 
+--vim.lsp.enable('rust-analyzer')
+--vim.lsp.enable('rust')
+vim.lsp.enable 'clangd'
+vim.lsp.enable 'luals'
+
 vim.o.swapfile = false
-
--- spell
--- toogle term with pwsh
-local powershell_options = {
-  shell = vim.fn.executable 'pwsh' == 1 and 'pwsh' or 'powershell',
-  shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
-  shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
-  shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
-  shellquote = '',
-  shellxquote = '',
-}
-
-for option, value in pairs(powershell_options) do
-  vim.opt[option] = value
-end
-
---
 
 -- neovide
 
 vim.g.neovide_opacity = 0.9
-
 vim.g.neovide_floating_shadow = false
 vim.g.neovide_fullscreen = true
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
@@ -66,49 +53,36 @@ if vim.g.neovide == true then
   vim.api.nvim_set_keymap('n', '<C-_>', ':lua vim.g.neovide_opacity = math.max(vim.g.neovide_opacity - 0.05, 0.0)<CR>', { silent = true })
 end
 
---format .nix
--- vim.api.nvim_set_keymap('n', '<C-n>', ':%!alejandra -qq<CR>', { silent = true })
-
 -- spell
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 vim.opt.spellcapcheck = ''
--- Make line numbers default
-vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
---
--- -- Sync clipboard between OS and Neovim.
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
+vim.opt.showmode = false
+
+-- -- Sync clipboard between OS and Neovim.
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
 vim.opt.breakindent = true
-
 -- Save undo history
 vim.opt.undofile = true
-
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
-
 -- Decrease update time
 vim.opt.updatetime = 250
-
 -- Decrease mapped sequence wait time
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
@@ -133,8 +107,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --
 vim.keymap.set('n', 'n', 'nzz', { noremap = true, silent = true })
 
-vim.keymap.set('n', 'J', '<C-d>', { noremap = true, silent = true })
-vim.keymap.set('n', 'K', '<C-u>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'J', '<C-d>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'K', '<C-u>', { noremap = true, silent = true })
 
 vim.keymap.set('', 'N', 'Nzz')
 
@@ -147,8 +121,8 @@ vim.keymap.set({ 'n', 'v' }, 'U', '<cmd>redo<CR>')
 -- save
 vim.keymap.set({ 'n', 'v' }, '<C-s>', '<cmd>wa!<CR>')
 
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 
 -- why this shit exists in 2025????
 vim.keymap.set('n', 'Q', '<nop>')
@@ -174,12 +148,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --
 
 vim.keymap.set('n', '<C-x>', '')
--- -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
---
+
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
